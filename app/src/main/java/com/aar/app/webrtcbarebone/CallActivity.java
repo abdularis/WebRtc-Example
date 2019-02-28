@@ -43,7 +43,7 @@ public class CallActivity extends AppCompatActivity {
     public static final String EXTRA_IS_MAKING_CALL = "CREATE_NEW_ID";
 
     private static final String TAG = "CallActivity";
-    private static final String WEB_SOCKET_URL = "http://10.0.2.2:3000";
+    private static final String WEB_SOCKET_URL = "http://35.187.238.244:3000";
 
     private static final String EVENT_CREATE_ID = "/api/create";
     private static final String EVENT_OFFER_CALL = "/api/offerCall";
@@ -119,7 +119,7 @@ public class CallActivity extends AppCompatActivity {
         mCamera = new Camera(this, Camera.Facing.Front, null);
 
         List<PeerConnection.IceServer> iceServers = new ArrayList<>();
-        iceServers.add(new PeerConnection.IceServer("stun:10.0.2.2:3478"));
+        iceServers.add(new PeerConnection.IceServer("stun:35.187.238.244:3478"));
 
         WebRtcPeerConnection.initialize(getApplicationContext());
         PeerConnectionFactory factory = PeerConnectionFactory.builder()
@@ -346,12 +346,6 @@ public class CallActivity extends AppCompatActivity {
                 VideoTrack vt = mediaStream.videoTracks.get(0);
                 vt.setEnabled(true);
                 vt.addSink(mRemoteRenderer);
-                vt.addSink(new VideoSink() {
-                    @Override
-                    public void onFrame(VideoFrame videoFrame) {
-                        Log.d(TAG, "render:onFrame");
-                    }
-                });
             }
         }
 
