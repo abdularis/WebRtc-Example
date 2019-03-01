@@ -7,6 +7,7 @@ import io.socket.client.Socket;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.aar.app.webrtcbarebone.webrtc.Camera;
@@ -296,6 +297,12 @@ public class CallActivity extends AppCompatActivity {
 
     private boolean isMakingCall() {
         return getIntent().getBooleanExtra(EXTRA_IS_MAKING_CALL, false);
+    }
+
+    public void onSwitchCamClick(View view) {
+        if (mCamera != null) {
+            mCamera.switchCamera();
+        }
     }
 
     private class PeerConnectionObserver implements PeerConnection.Observer {
